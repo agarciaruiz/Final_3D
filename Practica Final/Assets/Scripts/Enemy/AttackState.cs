@@ -89,6 +89,7 @@ public class AttackState : IEnemyState
 
     public void Impact()
     {
+
         enemyAI.animator.SetTrigger("Hit");
     }
 

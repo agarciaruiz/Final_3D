@@ -75,7 +75,7 @@
                     "id": "b51a936d-9178-4bbf-bffa-bff40870b8e1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "Hurt",

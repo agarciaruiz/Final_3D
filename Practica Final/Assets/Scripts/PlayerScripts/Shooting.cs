@@ -8,23 +8,19 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Rig aimLayer;
     [SerializeField] private float aimDuration = 0.1f;
     [SerializeField] private Transform target;
+    [SerializeField] private LayerMask zombieLayer;
 
     private Inventory inventory;
     private EquipmentManager equipmentManager;
     private Animator animator;
     private AudioSource gunAudio;
-    [HideInInspector] public float soundIntensity = 100f;
-    [SerializeField] private LayerMask zombieLayer;
-
-    private PlayerInput playerInput;
-    private InputAction reloadAction;
-
     private float lastFireTime;
+
+    [HideInInspector] public float soundIntensity = 100f;
 
     private void Awake()
     {
         GetReferences();
-        InitVariables();
     }
 
     void Update()
@@ -45,23 +41,26 @@ public class Shooting : MonoBehaviour
             Shoot(currentWeapon);
         }
 
-        if (reloadAction.triggered)
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            WeaponClass weaponClass = GameObject.FindGameObjectWithTag("Weapon").GetComponent<WeaponClass>();
-            weaponClass.Reload(equipmentManager.currentlyEquipedWeapon);
+            Weapon currentWeapon = inventory.GetItem(equipmentManager.currentlyEquipedWeapon);
+            WeaponClass weaponClass = currentWeapon.prefab.GetComponent<WeaponClass>();
+
+            int ammoToReload = currentWeapon.magazineSize - weaponClass.currentAmmo;
+            weaponClass.Reload(ammoToReload);
             PlayAudio(weaponClass.weapon.reloadFX);
         }
     }
 
-    private void RaycastShoot(Weapon currentWeapon, WeaponClass currentWeaponClass)
+    private void RaycastShoot(Weapon currentWeapon)
     {
         Ray ray = new Ray();
         RaycastHit hit;
 
         float currentWeaponRange = currentWeapon.range;
-        Transform barrel = currentWeaponClass.weaponBarrel;
-        ray.origin = transform.TransformPoint(barrel.position);
-        ray.direction = target.position - transform.TransformPoint(barrel.position);
+        Transform barrel = equipmentManager.currentWeapon.transform.GetChild(0);
+        ray.origin = barrel.position;
+        ray.direction = target.position - barrel.position;
 
         if (Physics.Raycast(ray, out hit, currentWeaponRange, ~zombieLayer))
         {
@@ -76,10 +75,10 @@ public class Shooting : MonoBehaviour
 
             if (hit.collider.gameObject.tag != "Enemy")
             {
-                //EmitParticles(currentWeapon.hitParticles, hit.point, hit.normal);
+                Instantiate(currentWeapon.hitParticles, hit.point, Quaternion.identity);
             }
         }
-        //currentWeapon.muzzleFlashParticles.Emit(1);
+        Instantiate(currentWeapon.muzzleFlashParticles, barrel.position, Quaternion.identity);
     }
 
     private void Shoot(Weapon currentWeapon)
@@ -92,7 +91,7 @@ public class Shooting : MonoBehaviour
             if (Time.time > lastFireTime + currentWeapon.fireRate)
             {
                 lastFireTime = Time.time;
-                RaycastShoot(currentWeapon, weaponScript);
+                RaycastShoot(currentWeapon);
                 weaponScript.UseAmmo(1, 0);
                 PlayAudio(currentWeapon.fireFX);
                 StartCoroutine(ShootAnim());
@@ -108,13 +107,6 @@ public class Shooting : MonoBehaviour
     private void CancelAim()
     {
         aimLayer.weight -= Time.deltaTime / aimDuration;
-    }
-
-    private void EmitParticles(ParticleSystem particles, Vector3 point, Vector3 normal)
-    {
-        particles.transform.position = point;
-        particles.transform.forward = normal;
-        particles.Emit(1);
     }
 
     private void PlayAudio(AudioClip clip)
@@ -140,13 +132,7 @@ public class Shooting : MonoBehaviour
     {
         inventory = GetComponent<Inventory>();
         equipmentManager = GetComponent<EquipmentManager>();
-        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         gunAudio = GetComponent<AudioSource>();
-    }
-
-    private void InitVariables()
-    {
-        reloadAction = playerInput.actions["Reload"];
     }
 }

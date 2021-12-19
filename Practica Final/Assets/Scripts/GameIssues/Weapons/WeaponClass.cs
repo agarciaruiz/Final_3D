@@ -56,31 +56,33 @@ public class WeaponClass: MonoBehaviour
 
     public void Reload(int ammoToReload)
     {
-        if (canReload)
+        if (currentAmmoStorage >= ammoToReload)
         {
-            if (currentAmmoStorage >= ammoToReload)
+            if (currentAmmo == weapon.magazineSize)
             {
-                if (currentAmmo == weapon.magazineSize)
-                {
-                    canReload = false;
-                    Debug.Log("Magazine full");
-                }
-                else
-                    canReload = true;
-
+                canReload = false;
+                Debug.Log("Magazine full");
+            }
+            else
+            {
+                canReload = true;
                 AddAmmo(ammoToReload, 0);
                 UseAmmo(0, ammoToReload);
-
                 magazineIsEmpty = false;
                 CheckCanShoot();
             }
-            else
-                Debug.Log("Not enough ammo to reaload");
+        }
+        else
+            Debug.Log("Not enough ammo to reaload");
+
+        /*if (canReload)
+        {
+
         }
         else
         {
             Debug.Log("Can't reload now");
-        }
+        }*/
     }
 
     public void CheckCanShoot()

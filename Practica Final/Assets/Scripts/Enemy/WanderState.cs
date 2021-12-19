@@ -67,7 +67,6 @@ public class WanderState : IEnemyState
     {
         enemyAI.animator.SetTrigger("Hit");
         enemyAI.OnAware();
-        //ToAttackState();
     }
 
     public void OnTriggerEnter(Collider col)

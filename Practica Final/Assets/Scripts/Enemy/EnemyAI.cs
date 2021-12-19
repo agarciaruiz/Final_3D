@@ -40,8 +40,8 @@ public class EnemyAI : MonoBehaviour
 
             if (isHit)
             {
-                currentState.Impact();
                 isHit = false;
+                currentState.Impact();
             }
         }
         else
@@ -73,18 +73,6 @@ public class EnemyAI : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         currentState.OnTriggerExit(other);
-    }
-
-    public void MoveAgent()
-    {
-        //navMeshAgent.isStopped = false;
-        animator.SetLayerWeight(animator.GetLayerIndex("Hit Layer"), 0);
-    }
-
-    public void StopAgent()
-    {
-        //navMeshAgent.isStopped = true;
-        animator.SetLayerWeight(animator.GetLayerIndex("Hit Layer"), 1);
     }
 
     private void InitVariables()

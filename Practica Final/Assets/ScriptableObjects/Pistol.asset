@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Pistol
   icon: {fileID: 21300000, guid: 5ef18c16feb1049639e81389fcb7adcb, type: 3}
   prefab: {fileID: 5405483963015775849, guid: bf482ce206de348cc882346a356017b3, type: 3}
-  muzzleFlashParticles: {fileID: 1825952877193395310, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
-  hitParticles: {fileID: 1121680008547190701, guid: 0cdab7b8429cf4f43b5c64a3b05076a4, type: 3}
+  muzzleFlashParticles: {fileID: 1986835377237387126, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  hitParticles: {fileID: 961035278023441959, guid: 0cdab7b8429cf4f43b5c64a3b05076a4, type: 3}
   fireFX: {fileID: 8300000, guid: e0311473955f540418a6ba9baf75f839, type: 3}
   reloadFX: {fileID: 8300000, guid: b74bd1d0bdbf448bba1c380b41be1316, type: 3}
   magazineSize: 12

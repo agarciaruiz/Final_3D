@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 public class EquipmentManager : MonoBehaviour
 {
     [HideInInspector] public int currentlyEquipedWeapon = 0;
+    [HideInInspector] public GameObject currentWeapon;
 
     [SerializeField] private Weapon defaultWeapon = null;
+    [SerializeField] private Transform weaponHolder;
     private Inventory inventory;
     private PlayerHUD playerHUD;
     private PlayerInput playerInput;
@@ -24,14 +26,14 @@ public class EquipmentManager : MonoBehaviour
     {
         if (equipPrimary.triggered && currentlyEquipedWeapon != 0)
         {
-            //UnequipWeapon();
+            UnequipWeapon();
             EquipWeapon(inventory.GetItem(0));
         }
         if (equipSecondary.triggered && currentlyEquipedWeapon != 1)
         {
             if (inventory.GetItem(1) != null)
             {
-                //UnequipWeapon();
+                UnequipWeapon();
                 EquipWeapon(inventory.GetItem(1));
             }
         }
@@ -39,10 +41,12 @@ public class EquipmentManager : MonoBehaviour
 
     private void EquipWeapon(Weapon weapon)
     {
+        currentWeapon = Instantiate(weapon.prefab, weaponHolder);
+
         int currentAmmo = weapon.prefab.GetComponent<WeaponClass>().currentAmmo;
         int currentAmmoStorage = weapon.prefab.GetComponent<WeaponClass>().currentAmmoStorage;
+
         playerHUD.UpdateWeaponUI(weapon);
-        
         if ((int)weapon.weaponStyle == 0)
         {
             playerHUD.UpdateAmmoUI(currentAmmo, currentAmmoStorage);
@@ -55,10 +59,10 @@ public class EquipmentManager : MonoBehaviour
         currentlyEquipedWeapon = (int)weapon.weaponStyle;
     }
 
-    /*private void UnequipWeapon()
+    private void UnequipWeapon()
     {
         Destroy(currentWeapon);
-    }*/
+    }
 
     private void InitVariables()
     {
