@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 3583936579582054909}
     - target: {fileID: 2666073859562475038, guid: a78a725941312494b930d664f3b315d0, type: 3}
       propertyPath: currentAmmo
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2666073859562475038, guid: a78a725941312494b930d664f3b315d0, type: 3}
       propertyPath: weaponBarrel
@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: e0311473955f540418a6ba9baf75f839, type: 3}
+    - target: {fileID: 8844666366743005280, guid: a78a725941312494b930d664f3b315d0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a725941312494b930d664f3b315d0, type: 3}
 --- !u!4 &5409798618702258207 stripped
