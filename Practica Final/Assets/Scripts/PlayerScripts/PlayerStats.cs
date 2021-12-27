@@ -65,6 +65,11 @@ public class PlayerStats : CharacterStats
         animator.SetLayerWeight(animator.GetLayerIndex("Hurt Layer"), 0);
     }
 
+    public void EndGame()
+    {
+        ListenerMethods.ChangeScene(Scenes.gameOver);
+    }
+
     /*private void PlayHurtSound()
     {
         AudioSource audioSource = GetComponent<AudioSource>();

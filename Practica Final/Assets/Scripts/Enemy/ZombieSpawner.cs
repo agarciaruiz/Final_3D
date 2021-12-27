@@ -8,7 +8,7 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private GameObject zombiesParent;
 
     private GameObject[] spawners;
-    private int waveNumber = 0;
+    [HideInInspector] public static int waveNumber = 0;
     private int spawnAmount = 0;
 
     [HideInInspector] public int enemiesKilled = 0;

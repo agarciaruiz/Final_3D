@@ -22,10 +22,10 @@ public class NavigationController : MonoBehaviour
 
     void Update()
     {
-        if(transform.position != destination)
+        if (transform.position != destination)
         {
             float dist = Vector3.Distance(destination, transform.position);
-            if(dist > stopDistance)
+            if (dist > stopDistance)
             {
                 reachedDestination = false;
                 agent.destination = destination;

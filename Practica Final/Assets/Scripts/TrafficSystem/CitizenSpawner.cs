@@ -18,10 +18,11 @@ public class CitizenSpawner : MonoBehaviour
         int count = 0;
         while(count < citizenToSpawn)
         {
-            GameObject obj = Instantiate(citizenPrefab, parent);
             Transform child = transform.GetChild(Random.Range(0, transform.childCount - 1));
+            GameObject obj = Instantiate(citizenPrefab, child.position, Quaternion.identity);
             obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
-            obj.transform.position = child.position;
+            //obj.transform.position = child.position;
+            obj.transform.parent = parent;
 
             yield return new WaitForEndOfFrame();
             count++;

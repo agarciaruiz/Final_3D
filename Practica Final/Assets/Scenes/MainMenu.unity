@@ -738,7 +738,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -805,7 +805,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -1350,7 +1350,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -2347,7 +2347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -2414,7 +2414,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -2576,7 +2576,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -2643,7 +2643,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934054153}
+      - m_Target: {fileID: 209057933}
         m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -2979,7 +2979,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1934054153}
+        - m_Target: {fileID: 209057933}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -3710,7 +3710,6 @@ GameObject:
   - component: {fileID: 1934054152}
   - component: {fileID: 1934054151}
   - component: {fileID: 1934054154}
-  - component: {fileID: 1934054153}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -3847,21 +3846,6 @@ MonoBehaviour:
   - {fileID: 952919014}
   - {fileID: 2078590857}
   - {fileID: 160225309}
---- !u!114 &1934054153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934054149}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a3e86575dc3448dc9e49a42881dbd7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverClip: {fileID: 8300000, guid: bb9046641d99944dd9a022fecde4bbc5, type: 3}
-  clickedClip: {fileID: 8300000, guid: a5b7e355d92274df2ac98b4b220b8564, type: 3}
-  audioSource: {fileID: 209057934}
 --- !u!82 &1934054154
 AudioSource:
   m_ObjectHideFlags: 0
