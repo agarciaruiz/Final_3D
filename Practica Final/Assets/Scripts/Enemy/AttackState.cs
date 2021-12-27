@@ -34,7 +34,7 @@ public class AttackState : IEnemyState
         }
         
 
-        if(distToTarget >= enemyAI.viewDist)
+        if(distToTarget >= enemyAI.fov.viewDist)
         {
             StopFollow();
         }
@@ -78,6 +78,8 @@ public class AttackState : IEnemyState
 
     private void StopFollow()
     {
+        enemyAI.navMeshAgent.isStopped = false;
+        enemyAI.fov.detected = false;
         enemyAI.isAware = false;
         ToWanderState();
     }
@@ -89,7 +91,6 @@ public class AttackState : IEnemyState
 
     public void Impact()
     {
-
         enemyAI.animator.SetTrigger("Hit");
     }
 

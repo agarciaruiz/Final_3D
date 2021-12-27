@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float animSmoothTime = 0.05f;
     [SerializeField] private float animationPlayTransition = 0.15f;
+    [SerializeField] private AudioClip m_JumpSound;
 
     private CharacterController controller;
     private PlayerInput playerInput;
+    private AudioSource audioSource;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform camTransform;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
         playerInput = GetComponent<PlayerInput>();
         playerStats = GetComponent<PlayerStats>();
         camTransform = Camera.main.transform;
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
             // Changes the height position of the player..
             if (jumpAction.triggered && groundedPlayer)
             {
+                PlayJumpSound();
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 animator.CrossFade(jumpAnimParam, animationPlayTransition);
             }
@@ -89,5 +93,11 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, camTransform.eulerAngles.y, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    private void PlayJumpSound()
+    {
+        audioSource.clip = m_JumpSound;
+        audioSource.Play();
     }
 }

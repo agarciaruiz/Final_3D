@@ -29,19 +29,9 @@ public class WanderState : IEnemyState
 
     private void SearchForPlayer()
     {
-        if(Vector3.Angle(Vector3.forward, enemyAI.transform.InverseTransformPoint(enemyAI.target.transform.position)) < enemyAI.fov / 2)
+        if (enemyAI.fov.detected)
         {
-            if(Vector3.Distance(enemyAI.target.transform.position, enemyAI.transform.position) < enemyAI.viewDist)
-            {
-                RaycastHit hit;
-                if(Physics.Linecast(enemyAI.transform.position, enemyAI.target.transform.position, out hit, -1))
-                {
-                    if (hit.transform.CompareTag("Player"))
-                    {
-                        enemyAI.OnAware();
-                    }
-                }
-            }
+            enemyAI.OnAware();
         }
     }
 

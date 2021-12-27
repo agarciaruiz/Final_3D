@@ -39,7 +39,7 @@ public class NavigationController : MonoBehaviour
                 }
             }
 
-            if (fov.detected)
+            if (fov != null && fov.detected)
             {
                 runAway = true;
                 Vector3 destination = new Vector3(fov.visibleTargets[0].transform.position.x, fov.visibleTargets[0].transform.position.y, -fov.visibleTargets[0].transform.position.z);
@@ -48,15 +48,18 @@ public class NavigationController : MonoBehaviour
                 fov.detected = false;
             }
 
-            if (runAway)
+            if (animator != null)
             {
-                animator.SetFloat("Speed", 1);
-                agent.speed = 3;
-            }
-            else
-            {
-                animator.SetFloat("Speed", 0.5f);
-                agent.speed = 1;
+                if (runAway)
+                {
+                    animator.SetFloat("Speed", 1);
+                    agent.speed = 3;
+                }
+                else
+                {
+                    animator.SetFloat("Speed", 0.5f);
+                    agent.speed = 1;
+                }
             }
         }
     }

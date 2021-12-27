@@ -5,9 +5,13 @@ using System.Collections;
 public class EnemyStats : CharacterStats
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip zombieDie;
     [SerializeField] private ParticleSystem bloodParticles;
     [SerializeField] private int damage;
+
+    private AudioSource audioSource;
     private LootableObj lootableObj;
+    private ZombieSpawner zombieSpawner;
     public float attackSpeed = 1.5f;
 
     private void Start()
@@ -27,6 +31,9 @@ public class EnemyStats : CharacterStats
     public override void Die()
     {
         base.Die();
+        audioSource.clip = zombieDie;
+        audioSource.Play();
+        zombieSpawner.enemiesKilled++;
         animator.SetTrigger("Die");
     }
 
@@ -55,5 +62,7 @@ public class EnemyStats : CharacterStats
     private void GetReferences()
     {
         lootableObj = GetComponent<LootableObj>();
+        audioSource = GetComponent<AudioSource>();
+        zombieSpawner = FindObjectOfType<ZombieSpawner>();
     }
 }

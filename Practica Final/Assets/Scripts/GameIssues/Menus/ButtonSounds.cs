@@ -8,6 +8,11 @@ public class ButtonSounds : MonoBehaviour
     [SerializeField] private AudioClip clickedClip;
     [SerializeField] private AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void OnHover()
     {
         audioSource.clip = hoverClip;

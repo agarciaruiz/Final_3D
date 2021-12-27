@@ -12,6 +12,12 @@ public class ListenerMethods
         SceneManager.LoadScene(scene);
     }
 
+    public static void ChangeMenu(GameObject menu1, GameObject menu2)
+    {
+        menu1.SetActive(false);
+        menu2.SetActive(true);
+    }
+
     // Cierra la app
     public static void QuitApp()
     {

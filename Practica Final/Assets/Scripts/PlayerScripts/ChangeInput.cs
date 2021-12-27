@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityStandardAssets.Vehicles.Car;
 
 public class ChangeInput : MonoBehaviour
@@ -13,20 +14,17 @@ public class ChangeInput : MonoBehaviour
     private GameObject carCam;
     private CarUserControl carUserControl;
     private CarController carController;
+    NavigationController navigationController;
+    CarWaypointNavigator carWaypointNavigator;
+    NavMeshAgent navMeshAgent;
 
     private bool canDrive = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerCams = GameObject.FindGameObjectWithTag("PlayerCam");
-
-        carCam = transform.GetChild(0).gameObject;
-        carController = GetComponent<CarController>();
-        carUserControl = GetComponent<CarUserControl>();
-        carUserControl.enabled = false;
-        carController.enabled = false;
+        GetReferences();
+        InitVariables();
     }
 
     // Update is called once per frame
@@ -48,6 +46,10 @@ public class ChangeInput : MonoBehaviour
         // Disable driving
         carController.enabled = false;
         carUserControl.enabled = false;
+        navigationController.enabled = true;
+        carWaypointNavigator.enabled = true;
+        navMeshAgent.enabled = true;
+
 
         // Enable player
         player.transform.parent = null;
@@ -63,6 +65,9 @@ public class ChangeInput : MonoBehaviour
         // Enable driving
         carController.enabled = true;
         carUserControl.enabled = true;
+        navigationController.enabled = false;
+        carWaypointNavigator.enabled = false;
+        navMeshAgent.enabled = false;
 
         // Disable player
         player.transform.parent = this.gameObject.transform;
@@ -87,5 +92,24 @@ public class ChangeInput : MonoBehaviour
         {
             canDrive = false;
         }
+    }
+
+    private void GetReferences()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerCams = GameObject.FindGameObjectWithTag("PlayerCam");
+
+        carCam = transform.GetChild(0).gameObject;
+        carController = GetComponent<CarController>();
+        carUserControl = GetComponent<CarUserControl>();
+        navigationController = GetComponent<NavigationController>();
+        carWaypointNavigator = GetComponent<CarWaypointNavigator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void InitVariables()
+    {
+        carUserControl.enabled = false;
+        carController.enabled = false;
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Weapon
   - PlayerCam
+  - Citizen
+  - Zombie
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Zombie
-  - 
+  - Player
   - 
   - 
   - 
