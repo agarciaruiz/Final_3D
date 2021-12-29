@@ -16,7 +16,7 @@ public class SmartDetection : MonoBehaviour
     {
         if(other.gameObject.tag == "Citizen" || other.gameObject.tag == "Car")
         {
-            if (navMeshAgent != null)
+            if (navMeshAgent != null && navMeshAgent.enabled == true)
             {
                 navMeshAgent.isStopped = true;
             }
@@ -27,7 +27,7 @@ public class SmartDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Citizen" || other.gameObject.tag == "Car")
         {
-            if (navMeshAgent != null)
+            if (navMeshAgent != null && navMeshAgent.enabled == true)
             {
                 navMeshAgent.isStopped = false;
             }

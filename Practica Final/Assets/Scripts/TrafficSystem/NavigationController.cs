@@ -22,43 +22,46 @@ public class NavigationController : MonoBehaviour
 
     void Update()
     {
-        if (transform.position != destination)
+        if (this != null)
         {
-            float dist = Vector3.Distance(destination, transform.position);
-            if (dist > stopDistance)
+            if (transform.position != destination)
             {
-                reachedDestination = false;
-                agent.destination = destination;
-            }
-            else
-            {
-                reachedDestination = true;
-                if (runAway)
+                float dist = Vector3.Distance(destination, transform.position);
+                if (dist > stopDistance)
                 {
-                    runAway = false;
-                }
-            }
-
-            if (fov != null && fov.detected)
-            {
-                runAway = true;
-                Vector3 destination = new Vector3(fov.visibleTargets[0].transform.position.x, fov.visibleTargets[0].transform.position.y, -fov.visibleTargets[0].transform.position.z);
-                agent.ResetPath();
-                SetDestination(destination);
-                fov.detected = false;
-            }
-
-            if (animator != null)
-            {
-                if (runAway)
-                {
-                    animator.SetFloat("Speed", 1);
-                    agent.speed = 3;
+                    reachedDestination = false;
+                    agent.destination = destination;
                 }
                 else
                 {
-                    animator.SetFloat("Speed", 0.5f);
-                    agent.speed = 1;
+                    reachedDestination = true;
+                    if (runAway)
+                    {
+                        runAway = false;
+                    }
+                }
+
+                if (fov != null && fov.detected)
+                {
+                    runAway = true;
+                    Vector3 destination = new Vector3(fov.visibleTargets[0].transform.position.x, fov.visibleTargets[0].transform.position.y, -fov.visibleTargets[0].transform.position.z);
+                    agent.ResetPath();
+                    SetDestination(destination);
+                    fov.detected = false;
+                }
+
+                if (animator != null)
+                {
+                    if (runAway)
+                    {
+                        animator.SetFloat("Speed", 1);
+                        agent.speed = 3;
+                    }
+                    else
+                    {
+                        animator.SetFloat("Speed", 0.5f);
+                        agent.speed = 1;
+                    }
                 }
             }
         }

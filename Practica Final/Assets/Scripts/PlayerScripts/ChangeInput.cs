@@ -17,7 +17,6 @@ public class ChangeInput : MonoBehaviour
     private NavigationController navigationController;
     private CarWaypointNavigator carWaypointNavigator;
     private NavMeshAgent navMeshAgent;
-    private SmartDetection smartDetection;
 
     private bool canDrive = false;
 
@@ -51,7 +50,6 @@ public class ChangeInput : MonoBehaviour
         // Enable IA
         navigationController.enabled = true;
         carWaypointNavigator.enabled = true;
-        smartDetection.enabled = true;
         navMeshAgent.enabled = true;
 
         // Enable player
@@ -72,7 +70,6 @@ public class ChangeInput : MonoBehaviour
         // Disable IA
         navigationController.enabled = false;
         carWaypointNavigator.enabled = false;
-        smartDetection.enabled = false;
         navMeshAgent.enabled = false;
 
         // Disable player
@@ -110,7 +107,6 @@ public class ChangeInput : MonoBehaviour
         carUserControl = GetComponent<CarUserControl>();
         navigationController = GetComponent<NavigationController>();
         carWaypointNavigator = GetComponent<CarWaypointNavigator>();
-        smartDetection = GetComponent<SmartDetection>();
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 

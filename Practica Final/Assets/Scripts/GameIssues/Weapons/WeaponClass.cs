@@ -74,15 +74,6 @@ public class WeaponClass: MonoBehaviour
         }
         else
             Debug.Log("Not enough ammo to reaload");
-
-        /*if (canReload)
-        {
-
-        }
-        else
-        {
-            Debug.Log("Can't reload now");
-        }*/
     }
 
     public void CheckCanShoot()

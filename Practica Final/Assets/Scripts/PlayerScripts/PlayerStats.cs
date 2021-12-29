@@ -26,8 +26,6 @@ public class PlayerStats : CharacterStats
     {
         base.Die();
         animator.SetTrigger("IsDead");
-        /*GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
-        gameManager.EndGame();*/
     }
 
     public override void CheckHealth()
@@ -46,7 +44,6 @@ public class PlayerStats : CharacterStats
     {
         base.TakeDamage(dmg);
         StartCoroutine(HurtAnim());
-        //PlayHurtSound();
     }
 
     private void LateUpdate()
@@ -69,11 +66,4 @@ public class PlayerStats : CharacterStats
     {
         ListenerMethods.ChangeScene(Scenes.gameOver);
     }
-
-    /*private void PlayHurtSound()
-    {
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.clip = hurtClip;
-        audioSource.Play();
-    }*/
 }
